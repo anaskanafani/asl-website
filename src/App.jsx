@@ -33,7 +33,7 @@ function App() {
 
       // 4. TODO - Make Detections
       const img = tf.browser.fromPixels(video);
-      const resized = tf.image.resizeBilinear(img, [640, 480]);
+      const resized = tf.image.resizeBilinear(img, [820, 615]);
       const casted = resized.cast("int32");
       const expanded = casted.expandDims(0);
       const obj = await net.executeAsync(expanded);
@@ -79,7 +79,7 @@ function App() {
       //  Loop and detect hands
       setInterval(() => {
         detect(net);
-      }, 6.7);
+      }, 50);
     };
     runCoco();
   }, []);
@@ -91,6 +91,7 @@ function App() {
           <Webcam
             ref={webcamRef}
             muted={true}
+            className="rounded-lg shadow-[0_20px_50px_rgba(8,_112,_184,_0.7)]"
             style={{
               position: "absolute",
               marginLeft: "auto",
@@ -99,8 +100,8 @@ function App() {
               right: 0,
               textAlign: "center",
               zindex: 9,
-              width: 640,
-              height: 480,
+              width: 820,
+              height: 615,
             }}
           />
 
@@ -114,8 +115,8 @@ function App() {
               right: 0,
               textAlign: "center",
               zindex: 8,
-              width: 640,
-              height: 480,
+              width: 820,
+              height: 615,
             }}
           />
         </header>
